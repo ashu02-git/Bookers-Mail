@@ -11,7 +11,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <li>Home</li>
+      <li><%= link_to "Home", user_path(current_user.id) %></li>
       <li>Users</li>
       <li>Books</li>
       <li>
