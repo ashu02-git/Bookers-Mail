@@ -2,11 +2,17 @@
 <table class="table">
   <tbody>
     <tr>
-      <td>image<br>name</td>
-      <td><%= @book.title %></td>
+      <td>
+        <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+        <br>
+        <%= link_to @book.user.name, user_path(@book.user_id) %>
+      </td>
+      <td><%= link_to @book.title, book_path %></td>
       <td><%= @book.opinion %></td>
-      <td>Edit</td>
-      <td>Destroy</td>
+      <% if @book.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_book_path %></td>
+        <td><%= link_to 'Destroy', book_path, method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>
