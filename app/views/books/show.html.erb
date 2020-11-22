@@ -1,7 +1,11 @@
-<div>エラー文章</div>
+<p id="notice">
+  <%=  notice %>
+</p>
 <div class="container x-5 px-sm-0">
+  <div id="alert">
+    <%= render 'users/alert', model: @newbook %>
+  </div>
   <div class="row">
-
     <div class="col-md-3">
       <div class="plofile-box">
         <%= render 'users/info', user: @user  %>
