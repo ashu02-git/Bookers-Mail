@@ -1,0 +1,6 @@
+<% if model.errors.any? %>
+  <%= model.errors.count %> error prohibited this user from being saved:
+  <% model.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>

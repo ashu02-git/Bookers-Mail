@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <%= render 'books/newbook', newbook: @book %>
+      <div id="alert">
+        <% if @book.errors.any? %>
+          <%= @book.errors.count %> error prohibited this user from being saved:
+          <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
