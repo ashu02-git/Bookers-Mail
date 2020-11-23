@@ -6,16 +6,16 @@
         <%= render 'users/alert', model: @book %>
       </div>
       <%= form_with model:@book, local:true do |f| %>
-        <div class="edit-item">
+        <div class="form-group">
           <label for="title">Title</label><br />
           <%= f.text_field :title, autofocus: true %><br />
         </div>
-        <div class="edit-item">
-          <laber class="opinion">Opinion</laber><br />
-          <%=  f.text_field :opinion, autofocus: true %><br />
+        <div class="form-group">
+          <laber class="body">Opinion</laber><br />
+          <%=  f.text_field :body, autofocus: true %><br />
         </div>
-        <div class="edit-item">
-          <%= f.submit 'Update Book' %>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Update Book</button>
         </div>
       <% end %>
 
