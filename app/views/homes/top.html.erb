@@ -8,12 +8,16 @@
       <p>In <i class="fas fa-book"></i><strong>Bookres</strong>,</p>
       <p>you can share and exchange your opinions , inpressions , and emotions</p>
       <p>about various books!</p>
-      <div>
-        <div>
-          <%= link_to "login", new_user_session_path %>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <button type="button" class="btn btn-info btn-sm btn-block mb-3">
+            <%= link_to "Log in", new_user_session_path, :style=>"color:white;" %>
+          </button>
         </div>
-        <div>
-          <%= link_to "sign up", new_user_registration_path %>
+        <div class="row">
+          <button type="button" class="btn btn-success btn-sm btn-block mb-3" role="button">
+            <%= link_to "Sign Up", new_user_registration_path, :style=>"color:white;" %>
+          </button>
         </div>
       </div>
     </div>
