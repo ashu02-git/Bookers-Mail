@@ -1,16 +1,11 @@
-<div class="container x-5 px-sm-0">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <div class="plofile-box">
-        <%= render 'users/info', user: @user  %>
-      </div>
-      <div class="new-box">
-        <%= render 'books/newbook', newbook: @newbook %>
-      </div>
-    </div>
-    <div class="col-md-8 offset-md-1">
-      <h2>Users</h2>
-      <table class="table">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Follower</h1>
+      <% if @users.count == 0 %>
+        <p>ユーザーはいません</p>
+      <% else %>
+        <table class="table">
         <tbody>
         <% @users.each do |user| %>
           <tr>
@@ -32,6 +27,7 @@
             <td><%= link_to 'Show', user %></td>
           </tr>
         <% end %>
+      <% end %>
         </tbody>
       </table>
     </div>

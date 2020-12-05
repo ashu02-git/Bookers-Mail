@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
 
   def follow(user_id)
-    follower.create(followed_id: user_id)
+    follower.find_or_create_by(followed_id: user_id)
   end
 
   # ユーザーのフォローを外す
