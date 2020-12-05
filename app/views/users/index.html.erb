@@ -18,6 +18,15 @@
               <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
             </td>
             <td><%= user.name %></td>
+            <td>フォロー数：<%= user.follower.count %></td>
+            <td>フォロワー数：<%= user.followed.count %></td>
+            <td>
+              <% if current_user.following?(user) %>
+                <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+              <% else %>
+                <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+              <% end %>
+            </td>
             <td><%= link_to 'Show', user %></td>
           </tr>
         <% end %>
