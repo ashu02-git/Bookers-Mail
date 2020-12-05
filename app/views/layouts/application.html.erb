@@ -70,6 +70,20 @@
       </nav>
     </header>
     <main>
+      <div class="container m-3">
+        <div class="row">
+          <div class="mx-auto">
+      <% if user_signed_in? %>
+        <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+          <%= f.text_field :word %>
+          <%= f.select :range, [['User', '1'],['Book', '2']] %>
+          <%= f.select :search,[["完全一致","perfect_much"],["前方一致","forward_mach"],["後方一致","backward_mach"],["部分一致","pertical_mach"]] %>
+          <%= f.submit '検索'  %>
+        <% end %>
+      <% end %>
+      </div>
+      </div>
+      </div>
       <%= yield %>
     </main>
     <footer>

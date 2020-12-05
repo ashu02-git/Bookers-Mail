@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-10 px-5 px-sm-0 mx-auto">
+      <% if @range == '1' %>
+        <h2>Users search for '<%= @word %>'</h2>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @user.each do |user| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+              </td>
+              <td><%= user.name %></td>
+              <td>フォロー数：<%= user.follower.count %></td>
+              <td>フォロワー数：<%= user.followed.count %></td>
+              <td>
+                <% unless current_user == user %>
+                  <% if current_user.following?(user) %>
+                    <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+                  <% else %>
+                    <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= link_to 'Show', user %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h2>Books search for '<%= @word %>'</h2>
+        <%= render 'books/booklist', books: @book %>
+      <% end %>
+    </div>
+  </div>
+</div>
